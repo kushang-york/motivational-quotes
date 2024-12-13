@@ -1,0 +1,20 @@
+{
+  "staging": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-happythoughts-staging-3bd64-authRole",
+      "UnauthRoleArn": "arn:aws:iam::381491868377:role/amplify-happythoughts-staging-3bd64-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::381491868377:role/amplify-happythoughts-staging-3bd64-authRole",
+      "Region": "us-east-1",
+      "DeploymentBucketName": "amplify-happythoughts-staging-3bd64-deployment",
+      "UnauthRoleName": "amplify-happythoughts-staging-3bd64-unauthRole",
+      "StackName": "amplify-happythoughts-staging-3bd64",
+      "StackId": "arn:aws:cloudformation:us-east-1:381491868377:stack/amplify-happythoughts-staging-3bd64/423bbc20-ad98-11ef-8f6e-0affcfc309cf",
+      "AmplifyAppId": "d3h5mp7g6y0wky"
+    },
+    "categories": {
+      "auth": {
+        "happythoughts": {}
+      }
+    }
+  }
+}
