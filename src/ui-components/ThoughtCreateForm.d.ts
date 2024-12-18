@@ -24,16 +24,19 @@ export declare type ValidationFunction<T> = (value: T, validationResponse: Valid
 export declare type ThoughtCreateFormInputValues = {
     author?: string;
     text?: string;
+    createdBy?: string;
 };
 export declare type ThoughtCreateFormValidationValues = {
     author?: ValidationFunction<string>;
     text?: ValidationFunction<string>;
+    createdBy?: ValidationFunction<string>;
 };
 export declare type PrimitiveOverrideProps<T> = Partial<T> & React.DOMAttributes<HTMLDivElement>;
 export declare type ThoughtCreateFormOverridesProps = {
     ThoughtCreateFormGrid?: PrimitiveOverrideProps<GridProps>;
     author?: PrimitiveOverrideProps<TextFieldProps>;
     text?: PrimitiveOverrideProps<TextFieldProps>;
+    createdBy?: PrimitiveOverrideProps<TextFieldProps>;
 } & EscapeHatchProps;
 export declare type ThoughtCreateFormProps = React.PropsWithChildren<{
     overrides?: ThoughtCreateFormOverridesProps | undefined | null;

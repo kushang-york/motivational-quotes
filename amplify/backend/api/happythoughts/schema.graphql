@@ -2,4 +2,6 @@ type Thought @model @auth(rules: [{allow: public}]) {
   id: ID!
   author: String
   text: String
+  createdBy: ID
 }
+ 

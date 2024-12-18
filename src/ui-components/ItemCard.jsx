@@ -159,7 +159,6 @@ export default function ItemCard(props) {
           children="Delete"
           onClick={() => {
             buttonThreeNineFiveFourSevenTwoFourOneOnClick();
-            location.reload()
           }}
           {...getOverrideProps(overrides, "Button39547241")}
         ></Button>

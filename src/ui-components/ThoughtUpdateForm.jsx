@@ -27,9 +27,11 @@ export default function ThoughtUpdateForm(props) {
   const initialValues = {
     author: "",
     text: "",
+    createdBy: "",
   };
   const [author, setAuthor] = React.useState(initialValues.author);
   const [text, setText] = React.useState(initialValues.text);
+  const [createdBy, setCreatedBy] = React.useState(initialValues.createdBy);
   const [errors, setErrors] = React.useState({});
   const resetStateValues = () => {
     const cleanValues = thoughtRecord
@@ -37,6 +39,7 @@ export default function ThoughtUpdateForm(props) {
       : initialValues;
     setAuthor(cleanValues.author);
     setText(cleanValues.text);
+    setCreatedBy(cleanValues.createdBy);
     setErrors({});
   };
   const [thoughtRecord, setThoughtRecord] = React.useState(thoughtModelProp);
@@ -58,6 +61,7 @@ export default function ThoughtUpdateForm(props) {
   const validations = {
     author: [],
     text: [],
+    createdBy: [],
   };
   const runValidationTasks = async (
     fieldName,
@@ -87,6 +91,7 @@ export default function ThoughtUpdateForm(props) {
         let modelFields = {
           author: author ?? null,
           text: text ?? null,
+          createdBy: createdBy ?? null,
         };
         const validationResponses = await Promise.all(
           Object.keys(validations).reduce((promises, fieldName) => {
@@ -149,6 +154,7 @@ export default function ThoughtUpdateForm(props) {
             const modelFields = {
               author: value,
               text,
+              createdBy,
             };
             const result = onChange(modelFields);
             value = result?.author ?? value;
@@ -174,6 +180,7 @@ export default function ThoughtUpdateForm(props) {
             const modelFields = {
               author,
               text: value,
+              createdBy,
             };
             const result = onChange(modelFields);
             value = result?.text ?? value;
@@ -187,6 +194,32 @@ export default function ThoughtUpdateForm(props) {
         errorMessage={errors.text?.errorMessage}
         hasError={errors.text?.hasError}
         {...getOverrideProps(overrides, "text")}
+      ></TextField>
+      <TextField
+        label="Created by"
+        isRequired={false}
+        isReadOnly={false}
+        value={createdBy}
+        onChange={(e) => {
+          let { value } = e.target;
+          if (onChange) {
+            const modelFields = {
+              author,
+              text,
+              createdBy: value,
+            };
+            const result = onChange(modelFields);
+            value = result?.createdBy ?? value;
+          }
+          if (errors.createdBy?.hasError) {
+            runValidationTasks("createdBy", value);
+          }
+          setCreatedBy(value);
+        }}
+        onBlur={() => runValidationTasks("createdBy", createdBy)}
+        errorMessage={errors.createdBy?.errorMessage}
+        hasError={errors.createdBy?.hasError}
+        {...getOverrideProps(overrides, "createdBy")}
       ></TextField>
       <Flex
         justifyContent="space-between"
